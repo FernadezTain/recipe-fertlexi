@@ -146,6 +146,8 @@ body {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   font-family: inherit;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .search-input:focus {
@@ -186,6 +188,8 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 0.95rem;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
 }
 
 .filter-btn::before {
@@ -224,6 +228,10 @@ body {
 
 .btn-baking {
   background: linear-gradient(135deg, #FFB703, #FB8500);
+}
+
+.btn-random {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
 }
 
 .filter-btn:hover {
@@ -272,6 +280,7 @@ body {
   position: relative;
   overflow: hidden;
   animation: fadeInScale 0.6s ease-out forwards;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes fadeInScale {
@@ -513,66 +522,327 @@ body {
   color: #bbb;
 }
 
+/* ===== ПЛАНШЕТЫ 1024px ===== */
+@media (max-width: 1024px) {
+  .recipe-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .recipe-card {
+    padding: 25px;
+  }
+}
+
+/* ===== ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ 768px ===== */
 @media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+
   .container {
     border-radius: 20px;
-    margin: 10px;
+    margin: 0;
   }
 
   .header {
-    padding: 35px 20px;
+    padding: 30px 20px;
   }
 
   .header h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 1rem;
   }
 
   .controls {
-    padding: 25px;
+    padding: 20px;
+  }
+
+  .search-section {
+    margin-bottom: 20px;
+  }
+
+  .search-input {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 11px 18px;
+    font-size: 0.8rem;
+    flex: 1;
+    min-width: 90px;
+  }
+
+  .stats {
+    padding: 15px 20px;
+    font-size: 0.9rem;
   }
 
   .recipe-list {
     grid-template-columns: 1fr;
     padding: 20px;
-    gap: 20px;
-  }
-
-  .buttons {
-    gap: 10px;
-  }
-
-  .filter-btn {
-    padding: 12px 20px;
-    font-size: 0.85rem;
+    gap: 15px;
   }
 
   .recipe-card {
     padding: 20px;
+    border-radius: 16px;
   }
 
   .recipe-title {
     font-size: 1.3rem;
   }
-}
 
-@media (max-width: 480px) {
-  body {
-    padding: 10px;
+  .recipe-meta {
+    padding: 6px 12px;
+    font-size: 0.85rem;
   }
 
-  .header h1 {
-    font-size: 1.8rem;
+  .section-title {
+    font-size: 0.95rem;
+    margin: 15px 0 12px 0;
+  }
+
+  .ingredients-list li {
+    padding: 10px 0 10px 30px;
+    font-size: 0.95rem;
+  }
+
+  .instructions-list li {
+    padding: 12px 0 12px 50px;
+    font-size: 0.95rem;
+  }
+
+  .instructions-list li::before {
+    width: 35px;
+    height: 35px;
+    top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .recipe-bottom {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .recipe-time {
+    font-size: 1rem;
+  }
+
+  .type-badge {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* ===== СРЕДНИЕ ТЕЛЕФОНЫ 600px ===== */
+@media (max-width: 600px) {
+  .buttons {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 10px 14px;
+    font-size: 0.75rem;
   }
 
   .recipe-list {
     padding: 15px;
+    gap: 12px;
+  }
+
+  .recipe-card {
+    padding: 18px;
+  }
+}
+
+/* ===== МАЛЕНЬКИЕ ТЕЛЕФОНЫ 480px ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .container {
+    border-radius: 16px;
+  }
+
+  .header {
+    padding: 20px 15px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .header::before {
+    background-size: 30px 30px;
+  }
+
+  .controls {
+    padding: 15px;
+  }
+
+  .search-section {
+    margin-bottom: 15px;
+  }
+
+  .search-input {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    border-radius: 25px;
   }
 
   .buttons {
+    gap: 6px;
     flex-direction: column;
   }
 
   .filter-btn {
+    padding: 10px 16px;
+    font-size: 0.75rem;
     width: 100%;
+    border-radius: 25px;
+  }
+
+  .stats {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+  }
+
+  .recipe-list {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .recipe-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .recipe-top {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .recipe-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .recipe-meta {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-left: 0;
+    width: fit-content;
+  }
+
+  .section-title {
+    font-size: 0.9rem;
+    margin: 12px 0 10px 0;
+  }
+
+  .ingredients-list li {
+    padding: 8px 0 8px 25px;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+  }
+
+  .ingredients-list li::before {
+    font-size: 1rem;
+  }
+
+  .instructions-list li {
+    padding: 10px 0 10px 45px;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+  }
+
+  .instructions-list li::before {
+    width: 32px;
+    height: 32px;
+    top: 5px;
+    font-size: 0.8rem;
+  }
+
+  .recipe-bottom {
+    margin-top: 12px;
+    padding-top: 12px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .recipe-time {
+    font-size: 0.95rem;
+  }
+
+  .type-badge {
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .empty-state {
+    padding: 40px 20px;
+  }
+
+  .empty-state-icon {
+    font-size: 3rem;
+  }
+
+  .empty-state-text {
+    font-size: 1.1rem;
+  }
+
+  .empty-state-subtext {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ 380px ===== */
+@media (max-width: 380px) {
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .filter-btn {
+    padding: 8px 12px;
+    font-size: 0.7rem;
+  }
+
+  .recipe-title {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 0.85rem;
+  }
+
+  .ingredients-list li,
+  .instructions-list li {
+    font-size: 0.85rem;
   }
 }
