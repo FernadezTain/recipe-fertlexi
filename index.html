@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🍽️ РЕЦЕПТЫ</title>
+<style>
+body{background:#FF6B6B;font-family:Arial;}
+.container{max-width:800px;margin:auto;background:white;padding:20px;border-radius:20px;}
+h1{text-align:center;color:#333;}
+.buttons{display:flex;gap:10px;margin:20px;justify-content:center;}
+button{padding:15px 25px;border:none;border-radius:10px;color:white;font-size:16px;cursor:pointer;}
+#btnAll{background:#118AB2;}
+#btnSweet{background:#EF476F;}
+#btnSalty{background:#06D6A0;}
+#btnDrinks{background:#9B5DE5;}
+.recipes{list-style:none;padding:0;}
+.recipes li{padding:15px;margin:10px;background:#f0f0f0;border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🍽️ ВСЕ РЕЦЕПТЫ</h1>
+<div class="buttons">
+<button id="btnAll">🔥 ВСЕ</button>
+<button id="btnSweet">🍰 СЛАДКИЕ</button>
+<button id="btnSalty">🍕 СОЛЁНЫЕ</button>
+<button id="btnDrinks">🥤 НАПИТКИ</button>
+</div>
+<ul class="recipes" id="recipeList">
+<li>🍰 Шоколадный торт - 200г муки, 200г сахара - 30 мин</li>
+<li>🍯 Медовые пряники - 300г меда, 400г муки - 20 мин</li>
+<li>🥗 Овощной салат - огурцы, помидоры - 15 мин</li>
+<li>🍝 Спагетти - 250г спагетти, соус - 20 мин</li>
+<li>🥤 Апельсиновый сок - 4 апельсина - 5 мин</li>
+<li>🍹 Ягодный смузи - ягоды, банан - 10 мин</li>
+</ul>
+</div>
+<script>
+const recipes=[
+"🍰 Шоколадный торт - 200г муки,200г сахара,2 яйца - 30 мин",
+"🍯 Медовые пряники - 300г меда,400г муки - 20 мин",
+"🍎 Яблочный пирог - 3 яблока,200г муки - 45 мин",
+"🥗 Овощной салат - огурцы,помидоры,перец - 15 мин",
+"🍝 Спагетти - 250г спагетти,томатный соус - 20 мин",
+"🥤 Апельсиновый сок - 4 апельсина - 5 мин",
+"🍹 Ягодный смузи - ягоды,банан,йогурт - 10 мин",
+"🍵 Мятный чай - мята,мед - 10 мин"
+];
+const list=document.getElementById('recipeList');
+function showAll(){
+list.innerHTML='';
+recipes.forEach(r=>{
+const li=document.createElement('li');
+li.textContent=r;
+list.appendChild(li);
+});
+}
+function filterBy(emoji){
+list.innerHTML='';
+recipes.forEach(r=>{
+if(r.includes(emoji)){
+const li=document.createElement('li');
+li.textContent=r;
+list.appendChild(li);
+}
+});
+}
+document.getElementById('btnAll').onclick=()=>showAll();
+document.getElementById('btnSweet').onclick=()=>filterBy('🍰');
+document.getElementById('btnSalty').onclick=()=>filterBy('🥗');
+document.getElementById('btnDrinks').onclick=()=>filterBy('🥤');
+showAll();
+</script>
+</body>
+</html>

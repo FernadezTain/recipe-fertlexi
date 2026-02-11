@@ -1,0 +1,254 @@
+body {
+background: 
+linear-gradient(45deg, 
+#FF6B6B 0%, 
+#FF8E8E 25%, 
+#FFD166 50%, 
+#06D6A0 75%, 
+#118AB2 100%);
+background-size: 400% 400%;
+animation: gradientFlow 15s ease infinite;
+min-height: 100vh;
+margin: 0;
+padding: 20px;
+font-family: 'Arial', sans-serif;
+}
+
+@keyframes gradientFlow {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+background: rgba(255, 255, 255, 0.92);
+backdrop-filter: blur(10px);
+border-radius: 25px;
+box-shadow: 
+0 20px 40px rgba(0, 0, 0, 0.2),
+0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+overflow: hidden;
+border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.header {
+background: linear-gradient(135deg, 
+#EF476F 0%, 
+#FFD166 50%, 
+#06D6A0 100%);
+padding: 40px;
+text-align: center;
+color: white;
+position: relative;
+overflow: hidden;
+}
+
+.header::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, 
+rgba(255, 255, 255, 0.1) 1px, 
+transparent 1px);
+background-size: 50px 50px;
+animation: float 20s linear infinite;
+}
+
+@keyframes float {
+0% { transform: translate(0, 0) rotate(0deg); }
+100% { transform: translate(100px, 100px) rotate(360deg); }
+}
+
+.header h1 {
+font-size: 3.2rem;
+text-shadow: 
+3px 3px 0 rgba(0, 0, 0, 0.2),
+6px 6px 0 rgba(0, 0, 0, 0.1);
+margin-bottom: 15px;
+background: linear-gradient(45deg, 
+white 30%, 
+#FFD166 70%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.filter-btn {
+padding: 15px 30px;
+border: none;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s;
+color: white;
+box-shadow: 
+0 5px 15px rgba(0, 0, 0, 0.2),
+0 2px 5px rgba(255, 255, 255, 0.3) inset;
+position: relative;
+overflow: hidden;
+}
+
+.filter-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, 
+transparent, 
+rgba(255, 255, 255, 0.3), 
+transparent);
+transition: 0.5s;
+}
+
+.filter-btn:hover::before {
+left: 100%;
+}
+
+.btn-all {
+background: linear-gradient(45deg, 
+#118AB2, 
+#073B4C);
+}
+
+.btn-sweet {
+background: linear-gradient(45deg, 
+#EF476F, 
+#FF9A8B);
+}
+
+.btn-salty {
+background: linear-gradient(45deg, 
+#06D6A0, 
+#4ECDC4);
+}
+
+.btn-drinks {
+background: linear-gradient(45deg, 
+#9B5DE5, 
+#C77DFF);
+}
+
+.recipe-card {
+background: white;
+border-radius: 20px;
+padding: 25px;
+margin: 20px;
+box-shadow: 
+0 10px 25px rgba(0, 0, 0, 0.1),
+0 0 0 2px rgba(255, 255, 255, 0.8) inset;
+transition: all 0.3s;
+border: 2px solid transparent;
+background-clip: padding-box;
+position: relative;
+}
+
+.recipe-card::before {
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(45deg, 
+#EF476F, 
+#FFD166, 
+#06D6A0, 
+#118AB2);
+border-radius: 22px;
+z-index: -1;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.recipe-card:hover::before {
+opacity: 1;
+}
+
+.recipe-card:hover {
+transform: translateY(-8px) scale(1.02);
+box-shadow: 
+0 20px 40px rgba(0, 0, 0, 0.2),
+0 0 0 2px rgba(255, 255, 255, 0.9) inset;
+}
+
+.recipe-card.sweet {
+border-left: 8px solid #EF476F;
+}
+
+.recipe-card.salty {
+border-left: 8px solid #06D6A0;
+}
+
+.recipe-card.drinks {
+border-left: 8px solid #9B5DE5;
+}
+
+.ingredients-list li {
+padding: 10px 0;
+border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+position: relative;
+padding-left: 30px;
+}
+
+.ingredients-list li::before {
+content: '✦';
+position: absolute;
+left: 0;
+color: #EF476F;
+font-size: 1.3rem;
+}
+
+.instructions-list li {
+padding: 12px 0 12px 50px;
+position: relative;
+counter-increment: step;
+border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.instructions-list li::before {
+content: counter(step);
+position: absolute;
+left: 0;
+top: 8px;
+width: 35px;
+height: 35px;
+background: linear-gradient(45deg, 
+#118AB2, 
+#073B4C);
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+box-shadow: 0 4px 10px rgba(17, 138, 178, 0.3);
+}
+
+/* Анимация загрузки */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.recipe-card {
+animation: fadeIn 0.5s ease-out forwards;
+}
+
+
+@media (max-width: 768px) {
+.container {
+border-radius: 15px;
+margin: 10px;
+}
+.header {
+padding: 25px;
+}
+.
+
